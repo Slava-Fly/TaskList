@@ -3,8 +3,7 @@
 //  TaskList
 //
 //  Created by Alexey Efimov on 02.04.2023.
-//
-
+///
 import UIKit
 import CoreData
 
@@ -29,7 +28,6 @@ class TaskListViewController: UITableViewController {
     
     private func fetchData() {
         let fetchRequest = Task.fetchRequest()
-        
         do {
             taskList = try viewContext.fetch(fetchRequest)
         } catch {
