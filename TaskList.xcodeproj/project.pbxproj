@@ -13,7 +13,7 @@
 		A83A1D5D29D9ECCA000B0D27 /* TaskList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A83A1D5B29D9ECCA000B0D27 /* TaskList.xcdatamodeld */; };
 		A83A1D5F29D9ECCB000B0D27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A83A1D5E29D9ECCB000B0D27 /* Assets.xcassets */; };
 		A83A1D6229D9ECCB000B0D27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A83A1D6029D9ECCB000B0D27 /* LaunchScreen.storyboard */; };
-		CE83C18629DC331C00310DDB /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83C18529DC331C00310DDB /* Storage.swift */; };
+		CE83C18629DC331C00310DDB /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83C18529DC331C00310DDB /* StorageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +24,8 @@
 		A83A1D5C29D9ECCA000B0D27 /* TaskList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskList.xcdatamodel; sourceTree = "<group>"; };
 		A83A1D5E29D9ECCB000B0D27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A83A1D6129D9ECCB000B0D27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A83A1D6329D9ECCB000B0D27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE83C18529DC331C00310DDB /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		A83A1D6329D9ECCB000B0D27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = TaskList/App/Info.plist; sourceTree = SOURCE_ROOT; };
+		CE83C18529DC331C00310DDB /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +58,11 @@
 		A83A1D5129D9ECCA000B0D27 /* TaskList */ = {
 			isa = PBXGroup;
 			children = (
+				CE83C18A29DCA6C000310DDB /* App */,
+				CE83C18929DCA60C00310DDB /* ViewControllers */,
 				CE83C18429DC32A200310DDB /* Services */,
-				A83A1D5229D9ECCA000B0D27 /* AppDelegate.swift */,
-				A83A1D5429D9ECCA000B0D27 /* SceneDelegate.swift */,
-				A83A1D5629D9ECCA000B0D27 /* TaskListViewController.swift */,
-				A83A1D5E29D9ECCB000B0D27 /* Assets.xcassets */,
-				A83A1D6029D9ECCB000B0D27 /* LaunchScreen.storyboard */,
-				A83A1D6329D9ECCB000B0D27 /* Info.plist */,
+				CE83C18829DCA5E300310DDB /* Storyboards */,
+				CE83C18729DCA5BB00310DDB /* Resources */,
 				A83A1D5B29D9ECCA000B0D27 /* TaskList.xcdatamodeld */,
 			);
 			path = TaskList;
@@ -73,9 +71,43 @@
 		CE83C18429DC32A200310DDB /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				CE83C18529DC331C00310DDB /* Storage.swift */,
+				CE83C18529DC331C00310DDB /* StorageManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		CE83C18729DCA5BB00310DDB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A83A1D5E29D9ECCB000B0D27 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CE83C18829DCA5E300310DDB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A83A1D6029D9ECCB000B0D27 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		CE83C18929DCA60C00310DDB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A83A1D5629D9ECCA000B0D27 /* TaskListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CE83C18A29DCA6C000310DDB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A83A1D5229D9ECCA000B0D27 /* AppDelegate.swift */,
+				A83A1D5429D9ECCA000B0D27 /* SceneDelegate.swift */,
+				A83A1D6329D9ECCB000B0D27 /* Info.plist */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,7 +182,7 @@
 			files = (
 				A83A1D5D29D9ECCA000B0D27 /* TaskList.xcdatamodeld in Sources */,
 				A83A1D5729D9ECCA000B0D27 /* TaskListViewController.swift in Sources */,
-				CE83C18629DC331C00310DDB /* Storage.swift in Sources */,
+				CE83C18629DC331C00310DDB /* StorageManager.swift in Sources */,
 				A83A1D5329D9ECCA000B0D27 /* AppDelegate.swift in Sources */,
 				A83A1D5529D9ECCA000B0D27 /* SceneDelegate.swift in Sources */,
 			);
@@ -293,12 +325,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GBTTU32HS2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TaskList/Info.plist;
+				INFOPLIST_FILE = TaskList/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -324,12 +357,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GBTTU32HS2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TaskList/Info.plist;
+				INFOPLIST_FILE = TaskList/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -12,7 +12,7 @@ class TaskListViewController: UITableViewController {
     private let cellID = "task"
     private var taskList: [Task] = []
     
-    private let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private let viewContext = (StorageManager.shared.persistentContainer).viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,8 @@ class TaskListViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
         setupNavigationBar()
         fetchData()
+        
+        //self.isEditing = true
     }
     
     private func addNewTask() {
@@ -34,7 +36,7 @@ class TaskListViewController: UITableViewController {
             print(error)
         }
     }
-    
+
     private func showAlert(withTitle title: String, andMessage message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let saveAction = UIAlertAction(title: "Save Task", style: .default) { [weak self] _ in
@@ -49,15 +51,15 @@ class TaskListViewController: UITableViewController {
         }
         present(alert, animated: true)
     }
-    
+
     private func save(_ taskName: String) {
         let task = Task(context: viewContext)
         task.title = taskName
         taskList.append(task)
-        
+
         let indexPath = IndexPath(row: taskList.count - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
-        
+
         if viewContext.hasChanges {
             do {
                 try viewContext.save()
@@ -65,6 +67,50 @@ class TaskListViewController: UITableViewController {
                 print(error)
             }
         }
+    }
+}
+
+// MARK: - Delete Cell
+extension TaskListViewController {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let context = (StorageManager.shared.persistentContainer).viewContext
+        if editingStyle == .delete {
+            context.delete(taskList[indexPath.row])
+            (StorageManager.shared).saveContext()
+            
+            do {
+                taskList = try context.fetch(Task.fetchRequest())
+            } catch {
+                print(error.localizedDescription)
+            }
+            tableView.reloadData()
+        }
+    }
+}
+
+// MARK: - Editing Cell
+//extension TaskListViewController {
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//        }
+//    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+//        return true
+//    }
+//
+//    }
+
+
+
+// MARK: - Moving Cell
+extension TaskListViewController {
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let elementToMove = taskList[sourceIndexPath.row]
+        taskList.remove(at: sourceIndexPath.row)
+        taskList.insert(elementToMove, at: destinationIndexPath.row)
+    }
+
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
 }
 
